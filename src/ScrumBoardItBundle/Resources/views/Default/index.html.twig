@@ -60,7 +60,7 @@
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
 				<div class="panel-heading">
-					Déjà imprimé(s) <span class="badge">0</span>
+					Déjà imprimé(s) <sp￼an class="badge">0</span>
 				</div>
 				<ul class="list-group selectable">{% for issue in issues if
 					issue.printed %} {{ block('issue') }} {% endfor %}
@@ -69,6 +69,32 @@
 		</div>
 	</div>
 </div>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Choix du template d'impression:
+        </div>
+        <div class="context-menu-input">
+            {{ form_start(template) }}
+                <p>
+                    {{ form_row(template.userStory) }}
+                </p>
+                <p>
+                    {{ form_row(template.subTask) }}
+                </p>
+                <p>
+                    {{ form_row(template.poc) }}
+                </p>
+
+                {{ form_rest(template) }}
+
+                <button class="btn btn-def btn-block" type="submit" value="SaveTemplate">Valider</button>
+
+            {{ form_end(template) }}
+        </div>
+    </div>
+</div>
+
 {% endblock %} {% block javascripts %} {{ parent() }}
 <script>
             $(function () {
@@ -107,7 +133,7 @@
                     $form.attr('action', "{{ path('add_flag') }}");
                     $form.find(':checkbox').prop('checked', true);
                     $form.submit();
-                    
+
                 });
                 $("#issues_search").find('select').change(function() {
                     $form = $(this).parents('form');
