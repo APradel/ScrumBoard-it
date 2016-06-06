@@ -91,8 +91,16 @@ class DefaultController extends Controller
         $service = $this->get($this->getUser()->getConnector() . '.api');
         $selected = $request->request->get('issues');
 
+        $session = $request->getSession();
+        $template = array(
+            'userStory' => $session->get('template')['userStory'],
+            'subTask' => $session->get('template')['subTask'],
+            'poc' => $session->get('template')['poc']
+        );
+
         return $this->render('ScrumBoardItBundle:Print:tickets.html.twig', array(
-            'issues' => $service->getSelectedIssues($request, $selected)
+            'issues' => $service->getSelectedIssues($request, $selected),
+            'template' => $template
         ));
     }
 

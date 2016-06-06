@@ -75,22 +75,26 @@
             Choix du template d'impression:
         </div>
         <div class="context-menu-input">
-            {{ form_start(template) }}
-                <p>
-                    {{ form_row(template.userStory) }}
-                </p>
-                <p>
-                    {{ form_row(template.subTask) }}
-                </p>
-                <p>
-                    {{ form_row(template.poc) }}
-                </p>
+            <div>
+                <div>
+                    {{ form_start(template) }}
 
-                {{ form_rest(template) }}
+                        {% for type in template if 'token' not in type.vars.name %}
+                            <h5>{{ form_label(type) }}</h5>
+                                {% for choix in type %}
+                                    {{ form_widget(choix) }}
+                                    <img src="{{ asset('bundles/scrumboardit/images/' ~type.vars.name~ '_template' ~ loop.index ~ '.png') }}"
+                                         height="150" width="150" />
+                               {% endfor %}
+                        {% endfor %}
 
-                <button class="btn btn-def btn-block" type="submit" value="SaveTemplate">Valider</button>
+                        {{ form_rest(template) }}
 
-            {{ form_end(template) }}
+                        <button class="btn btn-def btn-block" type="submit" value="SaveTemplate">Valider</button>
+
+                    {{ form_end(template) }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
