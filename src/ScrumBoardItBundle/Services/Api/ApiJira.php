@@ -53,6 +53,7 @@ class ApiJira extends AbstractApi
         foreach ($data->issues as $issue) {
             if ($issue->fields->issuetype->subtask) {
                 $task = new SubTask();
+                $task->setTask($issue->fields->parent->key);
             } else {
                 $task = new Task();
                 if (! empty($issue->fields->{$this->config['complexity_field']})) {
