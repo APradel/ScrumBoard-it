@@ -10,11 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use ScrumBoardItBundle\Entity\Search\SearchEntity;
 use ScrumBoardItBundle\Form\Type\ConfigurationType;
 use ScrumBoardItBundle\Entity\Configuration;
-<<<<<<< 1b04f400317da430fb59d2dda6edde10e6d171d7
-use ScrumBoardItBundle\Form\Type\BugtrackerType;
-=======
->>>>>>> hwioauthbundle github
-
 use ScrumBoardItBundle\Form\Type\BugtrackerType;
 use ScrumBoardItBundle\Entity\User;
 /**
@@ -37,26 +32,21 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/bugtracker", name="bugtracker")
+     * @Route("/bugtracker/{api}", name="bugtracker", defaults={"api" = null})
      * @Security("has_role('IS_AUTHENTICATED_FULLY')")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function bugtrackerAction(Request $request)
+    public function bugtrackerAction($api)
     {
-        // OAuth for Jira & GitHub entry point
-        $form =  $this->createForm(BugtrackerType::class);
-        $form->handleRequest($request);
-        if($form->get('api')->getData()) {
-            $api = $form->get('api')->getData();
+        if($api) {
             $this->getUser()->setApi($api.'.api');
             return $this->redirect($this->generateUrl('hwi_oauth_service_redirect', array(
                 'service' => $api
             )));
         }
-        return $this->render('ScrumBoardItBundle:Security:bugtracker.html.twig', array(
-            'form' => $form->createView(),
-        ));
+
+        return $this->render('ScrumBoardItBundle:Default:bugtracker.html.twig');
     }
 
     /**
