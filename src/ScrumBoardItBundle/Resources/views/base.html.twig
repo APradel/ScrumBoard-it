@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
 
-{% form_theme form "ScrumBoardItBundle:Form:fields.html.twig" %}
+{% if form is defined %}
+    {% form_theme form "ScrumBoardItBundle:Form:fields.html.twig" %}
+{% endif %}
 
 {% block title %}
     ScrumBoard-it
