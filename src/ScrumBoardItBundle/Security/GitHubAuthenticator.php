@@ -5,7 +5,6 @@ namespace ScrumBoardItBundle\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ScrumBoardItBundle\Services\ApiCaller;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
@@ -15,13 +14,13 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
  */
 class GitHubAuthenticator extends ApiAuthenticator
 {
-
     /**
      * Api configuration.
+     *
      * @var array
      */
     private $config;
-    
+
     public function __construct(Router $router, ApiCaller $apiCaller, TokenStorage $token, array $config = null)
     {
         parent::__construct($router, $apiCaller, $token);

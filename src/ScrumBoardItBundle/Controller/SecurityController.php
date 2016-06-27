@@ -76,7 +76,7 @@ class SecurityController extends Controller
 
                     return $this->redirect('login');
                 } catch (UniqueConstraintViolationException $e) {
-                    $error = new UniqueConstraintViolationException("Désolé, ce nom d'utilisateur est déjà utilisé...");
+                    $error = new \Exception("Désolé, ce nom d'utilisateur est déjà utilisé...");
                 } catch (\Exception $e) {
                     $error = new \Exception("Une erreur s'est produite, veuillez réessayer.");
                 }

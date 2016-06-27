@@ -23,7 +23,7 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, array(
-                'label' => "Nom d'utilisateur:",
+                'label' => "Nom d'utilisateur: *",
                 'attr' => array(
                     'class' => 'form-control',
                 ),
@@ -34,12 +34,12 @@ class RegistrationType extends AbstractType
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'options' => array('attr' => array('class' => 'form-control')),
                 'required' => true,
-                'first_options' => array('label' => 'Mot de passe:'),
-                'second_options' => array('label' => 'Confirmer le mot de passe:'),
+                'first_options' => array('label' => 'Mot de passe: *'),
+                'second_options' => array('label' => 'Confirmer le mot de passe: *'),
                 'property_path' => 'plainPassword',
             ))
             ->add('jira_url', TextType::class, array(
-                'label' => "Inidiqer l'url de votre Jira:",
+                'label' => "Indiquer l'url de votre Jira:",
                 'attr' => array(
                     'class' => 'form-control',
                 ),
