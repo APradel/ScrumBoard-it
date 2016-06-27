@@ -19,7 +19,6 @@ class ApiJira extends AbstractApi
     const LABEL_SUBTASK = 'Sous-tâche';
     const LABEL_BOGUE = 'Bogue';
     const LABEL_POC = 'POC';
-    const LABEL_POST_IT = 'Post-it';
     const MAX_RESULTS = 50;
 
     /**

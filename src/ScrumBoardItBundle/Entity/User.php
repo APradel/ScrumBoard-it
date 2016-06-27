@@ -230,7 +230,7 @@ class User implements UserInterface, EquatableInterface
     }
 
     /**
-     * Get Hash.
+     * Get hash.
      *
      * @return string
      */
@@ -240,7 +240,7 @@ class User implements UserInterface, EquatableInterface
     }
 
     /**
-     * Set Hash.
+     * Set hash.
      * 
      * @param string $hash
      *
