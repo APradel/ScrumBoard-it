@@ -112,6 +112,10 @@ class SecurityController extends Controller
     /**
      * @Route("/edit_profile", name="edit_profile")
      * @Security("has_role('IS_AUTHENTICATED_FULLY')")
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function editProfileAction(Request $request)
     {

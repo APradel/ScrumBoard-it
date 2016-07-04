@@ -24,7 +24,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY','IS_CONFIGURED')) {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY', 'IS_CONFIGURED')) {
             return $this->redirect('home');
         }
 
@@ -35,7 +35,7 @@ class DefaultController extends Controller
      * @Route("/bugtracker", name="bugtracker")
      * @Security("has_role('IS_AUTHENTICATED_FULLY')")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function bugtrackerAction(Request $request)
     {
@@ -56,6 +56,8 @@ class DefaultController extends Controller
     /**
      * @Route("/home", name="home")
      * @Security("has_role('IS_AUTHENTICATED_FULLY','IS_CONFIGURED')")
+     *
+     * @return Response
      */
     public function homeAction(Request $request)
     {
